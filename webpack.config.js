@@ -25,7 +25,7 @@ module.exports = {
         exclude: /node_modules/,
       },
       {
-        test: /\.(png|jp(e*)g|svg|gif)$/,
+        test: /\.(png|jp(e*)g|gif)$/,
         use: ['file-loader'],
       },
       {
@@ -36,6 +36,11 @@ module.exports = {
   },
   resolve: {
     extensions: ['.jsx', '.js', '.tsx', '.ts'],
+    alias: {
+      '@redux': path.resolve(__dirname, 'src/redux'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+    },
   },
   plugins: [
     new HtmlWebpackPlugin({
