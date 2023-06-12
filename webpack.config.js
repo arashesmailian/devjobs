@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         test: /\.svg$/,
-        use: ['@svgr/webpack'],
+        use: ['@svgr/webpack', 'url-loader'],
       },
     ],
   },
@@ -40,6 +40,8 @@ module.exports = {
       '@redux': path.resolve(__dirname, 'src/redux'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@assets': path.resolve(__dirname, 'src/assets'),
+      '@styles': path.resolve(__dirname, 'src/style'),
+      '@typings': path.resolve(__dirname, 'src/types'),
     },
   },
   plugins: [
