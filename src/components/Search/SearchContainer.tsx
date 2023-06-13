@@ -1,29 +1,40 @@
+import {ChangeEvent, useState} from 'react'
+import {useDispatch} from 'react-redux'
 import InputElements from '@components/FormElements/FormElements'
 import {Form, FromSection} from './SearchContainer.styled'
 import CheckBox from '@components/CheckBox/CheckBox'
 import Button from '@components/Button/Button'
-import {useDispatch, useSelector} from 'react-redux'
-import {RootState} from '@redux/store'
-import {ChangeEvent, useEffect, useState} from 'react'
-import {IJob} from '@typings/IJob'
-import {fullTimeFilter} from '@redux/reducers/JobsSlice'
+import {
+  filteringByFullTime,
+  filteringByLocation,
+  filteringOnInfo,
+} from '@redux/reducers/newJobSlice'
 
 const SearchContainer = () => {
   // ***** states ***** //
-  const dispatch = useDispatch()
-  const jobs = useSelector((state: RootState) => state.jobs)
+  const infosStateHook = useState<string>('')
+  const locationStateHook = useState<string>('')
   const [checkBoxStatus, setCheckBoxStatus] = useState<boolean>(false)
+  const dispatch = useDispatch()
   // ***** states ***** //
-  useEffect(() => {
-    dispatch(fullTimeFilter(checkBoxStatus))
-  }, [checkBoxStatus])
+
+  const formSubmitHandler = (e: ChangeEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    dispatch(filteringOnInfo(infosStateHook[0]))
+    dispatch(filteringByLocation(locationStateHook[0]))
+    dispatch(filteringByFullTime(checkBoxStatus))
+  }
+
   return (
-    <Form>
+    <Form onSubmit={formSubmitHandler}>
       <FromSection>
-        <InputElements />
+        <InputElements
+          infosStateHook={infosStateHook}
+          locationStateHook={locationStateHook}
+        />
         <CheckBox
           status={checkBoxStatus}
-          changeChackBoxHandler={setCheckBoxStatus}
+          changeCheckBoxHandler={setCheckBoxStatus}
         />
         <div>
           <Button primary autoWidth isSearch>

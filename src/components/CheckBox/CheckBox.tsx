@@ -1,12 +1,10 @@
-import {useRef} from 'react'
 import {CheckBoxLabelContainer} from './CheckBox.styled'
 
-const CheckBox = (props: any) => {
-  const inputRef = useRef<HTMLInputElement>(null)
+const CheckBox = ({status, changeCheckBoxHandler}) => {
   return (
     <CheckBoxLabelContainer htmlFor='filterByFullTime'>
-      <input type='checkbox' checked={props.status} onChange={() => ''} />
-      <span onClick={() => props.changeChackBoxHandler(!props.status)}></span>
+      <input type='checkbox' checked={status} onChange={() => ''} />
+      <span onClick={() => changeCheckBoxHandler(!status)}></span>
       Full Time
     </CheckBoxLabelContainer>
   )

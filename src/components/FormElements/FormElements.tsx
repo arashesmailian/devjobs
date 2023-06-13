@@ -1,24 +1,21 @@
-import {ChangeEvent, useEffect, useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {ChangeEvent} from 'react'
 import {Label} from './FormElements.styled'
 import {IconSearch, IconLocation} from '@assets/desktop'
-import {locationFilter, titleFilter} from '@redux/reducers/JobsSlice'
 
-const InputElements = () => {
-  const dispatch = useDispatch()
-  const [inputTitle, setInputTitle] = useState<string>('')
-  const [inputLocation, setInputLocation] = useState<string>('')
+const InputElements = (props: {
+  infosStateHook: [string, any]
+  locationStateHook: [string, any]
+}) => {
+  const [info, setInfo] = props.infosStateHook
+  const [location, setLocation] = props.locationStateHook
+
   const titleValueOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputTitle(e.target.value)
+    setInfo(e.target.value)
   }
   const locationValueOnChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setInputLocation(e.target.value)
-
+    setLocation(e.target.value)
   }
 
-  useEffect(() => {
-    dispatch(locationFilter(inputLocation))
-  }, [inputLocation,inputTitle])
   return (
     <>
       <Label htmlFor='filterByInfos'>
@@ -26,7 +23,7 @@ const InputElements = () => {
         <input
           type='text'
           placeholder='title'
-          value={inputTitle}
+          value={info}
           onChange={titleValueOnChange}
         />
       </Label>
@@ -35,7 +32,7 @@ const InputElements = () => {
         <input
           type='text'
           placeholder='location'
-          value={inputLocation}
+          value={location}
           onChange={locationValueOnChange}
         />
       </Label>

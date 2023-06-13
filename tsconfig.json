@@ -2,7 +2,8 @@
   "compilerOptions": {
     "outDir": "./dist/",
     "sourceMap": true,
-    "noImplicitAny": true,
+    // "noImplicitAny": true,
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "allowUmdGlobalAccess": true,
     "allowSyntheticDefaultImports": true, //issue with default import
