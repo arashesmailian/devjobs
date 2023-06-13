@@ -1,4 +1,4 @@
-export interface CompanyImageInterface {
+export interface ICompanyImage {
   small?: boolean
   backGroundColor?: string
 }

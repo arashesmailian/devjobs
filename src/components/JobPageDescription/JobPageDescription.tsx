@@ -1,4 +1,4 @@
-import {JobInetrface} from '@typings/JobInterface'
+import {IJob} from '@typings/IJob'
 import {
   JobDescSection,
   JobDescriptionDetails,
@@ -6,7 +6,7 @@ import {
 import JobInfos from '@components/JobInfos/JobInfos'
 import Button from '@components/Button/Button'
 
-const JobPageDescription = (props: JobInetrface) => {
+const JobPageDescription = (props: IJob) => {
   return (
     <JobDescSection>
       <JobDescriptionDetails>

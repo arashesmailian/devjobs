@@ -1,4 +1,4 @@
-export interface MainButtonInterface {
+export interface IMainButton {
   primary?: boolean
   autoWidth?: boolean
   noBackground?: boolean

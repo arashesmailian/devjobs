@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import {MainButtonInterface} from '@typings/MainButtonInterface'
+import {IMainButton} from '@typings/IMainButton'
 
-export const MainButton = styled.button<MainButtonInterface>`
+export const MainButton = styled.button<IMainButton>`
   width: ${(props) => (props.autoWidth ? 'auto' : '12rem')};
   margin-top: ${(props) => (props.marginTop ? '6rem' : '')};
   font-size: 1.2rem;

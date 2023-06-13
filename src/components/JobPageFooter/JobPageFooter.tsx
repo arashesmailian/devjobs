@@ -1,8 +1,8 @@
-import {JobInetrface} from '@typings/JobInterface'
+import {IJob} from '@typings/IJob'
 import {FooterBannerSection} from './JobPageFooter.styled'
 import Button from '@components/Button/Button'
 
-const JobPageFooter = (props: JobInetrface) => {
+const JobPageFooter = (props: IJob) => {
   return (
     <FooterBannerSection>
       <div>

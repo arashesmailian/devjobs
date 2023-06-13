@@ -1,17 +1,18 @@
 import {useMemo} from 'react'
 import {useParams} from 'react-router-dom'
 import styled from 'styled-components'
-import {JobInetrface} from '@typings/JobInterface'
+import {IJob} from '@typings/IJob'
 import CompanyPageHeader from '@components/CompanyPageHeader/CompanyPageHeader'
 import JobPageDescription from '@components/JobPageDescription/JobPageDescription'
 import JobPageBottomBanner from '@components/JobPageFooter/JobPageFooter'
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
 
 const jobs = require('../../data.json')
 
 const JobPage: React.FC = () => {
   const {id} = useParams()
-  const job: JobInetrface = useMemo(() => {
-    return jobs.find((job: JobInetrface) => String(job.id) === id)
+  const job: IJob = useMemo(() => {
+    return jobs.find((job: IJob) => String(job.id) === id)
   }, [id])
   return (
     <>
@@ -27,6 +28,14 @@ const JobPage: React.FC = () => {
         <JobPageBottomBanner {...job} />
       </Footer>
     </>
+  )
+}
+
+const WrappedJobPage: React.FC = () => {
+  return (
+    <ErrorBoundary>
+      <JobPage />
+    </ErrorBoundary>
   )
 }
 

@@ -9,7 +9,6 @@ const Headers = () => {
       <Header.ItemsContainer>
         <div>
           <LogoIcon />
-          <IconLocation />
         </div>
         <ToggleButton />
       </Header.ItemsContainer>

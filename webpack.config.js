@@ -11,6 +11,7 @@ module.exports = {
   devtool: 'inline-source-map',
   devServer: {
     static: './dist',
+    historyApiFallback: true, // for router added
   },
   module: {
     rules: [

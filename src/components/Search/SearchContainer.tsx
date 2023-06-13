@@ -5,7 +5,7 @@ import Button from '@components/Button/Button'
 import {useDispatch, useSelector} from 'react-redux'
 import {RootState} from '@redux/store'
 import {ChangeEvent, useEffect, useState} from 'react'
-import {JobInetrface} from '@typings/JobInterface'
+import {IJob} from '@typings/IJob'
 import {fullTimeFilter} from '@redux/reducers/JobsSlice'
 
 const SearchContainer = () => {

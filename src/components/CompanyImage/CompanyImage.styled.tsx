@@ -1,7 +1,7 @@
 import styled from 'styled-components'
-import {CompanyImageInterface} from '@typings/CompanyImageInterface'
+import {ICompanyImage} from '@typings/ICompanyImage'
 
-export const CompanyImageContainer = styled.div<CompanyImageInterface>`
+export const CompanyImageContainer = styled.div<ICompanyImage>`
   display: grid;
   place-items: center;
   flex-shrink: 0;

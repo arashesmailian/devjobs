@@ -1,7 +1,8 @@
 import { createSlice,PayloadAction } from "@reduxjs/toolkit";
-import { JobInetrface } from "@typings/JobInterface";
+import { IJob } from "@typings/IJob";
 
-const data:JobInetrface[] = require('../../../data.json')
+const allData:IJob[] = require('../../../data.json')
+const data:IJob[] = allData.slice(0,9)
 
 export const JobsSlice = createSlice({
     name:'jobsState',
@@ -9,16 +10,21 @@ export const JobsSlice = createSlice({
     reducers:{
         fullTimeFilter:(state,action:PayloadAction<boolean>)=>{
             if(!action.payload) return data
-            return data.filter(job=>job.contract==='Full Time')
+            return allData.filter(job=>job.contract==='Full Time')
         },
         titleFilter:(state,action:PayloadAction<string>)=>{
-            return data.filter(job=>job.position.toLocaleLowerCase().includes(action.payload.toLocaleLowerCase()))
+            if(!action.payload) return data
+            return allData.filter(job=>job.position.toLocaleLowerCase().includes(action.payload.toLocaleLowerCase()) || job.company.toLowerCase().includes(action.payload.toLowerCase()))
         },
-        findSpecificJob:(state,action:PayloadAction<string>)=>{
-            return data.filter(job=>String(job.id)===action.payload)
-        }   
+        locationFilter:(state,action:PayloadAction<string>)=>{
+            if(!action.payload) return data
+            return allData.filter(job=>job.location.toLowerCase().includes(action.payload.toLowerCase()))
+        },
+        loadMore:(state,action:PayloadAction<any>)=>{
+            return state.concat(...allData.slice(9))
+        },
     }
 })
 
-export const {fullTimeFilter,titleFilter,findSpecificJob} = JobsSlice.actions
+export const {fullTimeFilter,titleFilter,locationFilter,loadMore} = JobsSlice.actions
 export default JobsSlice.reducer

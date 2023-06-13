@@ -1,10 +1,10 @@
 import CompanyImage from '@components/CompanyImage/CompanyImage'
-import {JobInetrface} from '@typings/JobInterface'
+import {IJob} from '@typings/IJob'
 import {JobContainer} from './JobCard.styled'
 import JobInfos from '@components/JobInfos/JobInfos'
 import {Link} from 'react-router-dom'
 
-const JobCard = (props: {key: number; job: JobInetrface}) => {
+const JobCard = (props: {key: number; job: IJob}) => {
   return (
     <JobContainer>
       <CompanyImage

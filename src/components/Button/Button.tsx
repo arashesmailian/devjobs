@@ -5,6 +5,7 @@ interface Props {
   autoWidth?: boolean
   marginTop?: boolean
   isSearch?: boolean
+  clickHandler?:  any
 }
 
 const Button: React.FC<React.PropsWithChildren<Props>> = ({
@@ -13,6 +14,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
   autoWidth,
   marginTop,
   isSearch,
+  clickHandler,
 }) => {
   return (
     <MainButton
@@ -20,6 +22,7 @@ const Button: React.FC<React.PropsWithChildren<Props>> = ({
       autoWidth={autoWidth}
       marginTop={marginTop}
       isSearch={isSearch}
+      onClick={clickHandler}
     >
       {children}
     </MainButton>
