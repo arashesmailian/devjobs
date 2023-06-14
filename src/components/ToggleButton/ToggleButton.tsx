@@ -6,15 +6,15 @@ import {changeTheme} from '@redux/reducers/ThemeSlice'
 import {RootState} from '@redux/store'
 
 const ToggleButton = () => {
-  const isLight = useSelector((state: RootState) => state.theme.isLightMode)
+  const theme = useSelector((state: RootState) => state.theme)
   const dispatch = useDispatch()
   const handleClick = () => {
-    dispatch(changeTheme(!isLight))
+    dispatch(changeTheme(theme === 'light'?'dark':'light'))
   }
   return (
     <ToggleButtonContainer>
       <IconSun />
-      <ThemeButton onClick={handleClick} isLightMode={isLight} />
+      <ThemeButton onClick={handleClick} activeTheme={theme} />
       <IconMoon />
     </ToggleButtonContainer>
   )

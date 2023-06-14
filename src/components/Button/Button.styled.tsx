@@ -2,12 +2,13 @@ import styled from 'styled-components'
 import {IMainButton} from '@typings/IMainButton'
 
 export const MainButton = styled.button<IMainButton>`
-  width: ${(props) => (props.autoWidth ? 'auto' : '12rem')};
+  display: ${(props) => (props.showOnlyOnMobile ? 'none' : 'block')};
+  width: ${(props) => (props.autoWidth ? 'auto' : '14rem')};
   margin-top: ${(props) => (props.marginTop ? '6rem' : '')};
-  font-size: 1.2rem;
+  font-size: var(--font-size-body);
   font-weight: 700;
-  border-radius: 0.5rem;
-  padding: ${(props) => (props.isSearch ? '1rem 1.6rem' : '1.6rem')};
+  border-radius: var(--border-radius-xs);
+  padding: 1.6rem;
   flex-shrink: 1;
   text-transform: capitalize;
   transition: 0.2s linear;
@@ -15,15 +16,21 @@ export const MainButton = styled.button<IMainButton>`
     props.noBackground
       ? 'transparent'
       : props.primary
-      ? 'var(--Violet)'
-      : 'var(--background-color-btn2)'};
-  color: ${(props) => (props.primary ? 'var(--White)' : 'var(--Violet)')};
+      ? 'var(--color-violet)'
+      : 'var(--background-color-btn-2)'};
+  color: ${(props) =>
+    props.primary ? 'var(--color-white)' : 'var(--color-btn-2)'};
+
   @media (hover: hover) {
     &:hover {
       background-color: ${(props) =>
         props.primary
-          ? 'var(--Light-Violet)'
-          : 'var(--background-color-hover-btn2)'};
+          ? 'var(--color-light-violet)'
+          : 'var(--background-color-btn-2-hover)'};
     }
+  }
+  @media (max-width: 48.12em) {
+    display: ${(props) =>
+      props.hideOnMobile ? 'none' : props.showOnlyOnMobile ? 'block' : ''};
   }
 `

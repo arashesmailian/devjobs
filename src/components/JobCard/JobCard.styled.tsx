@@ -9,9 +9,9 @@ export const JobContainer = styled.article`
     bottom: 0;
     left: 0;
     width: 100%;
-    height: calc(100% - 3.2rem);
-    background-color: var(--White);
-    border-radius: 0.5rem;
+    height: calc(100% - 3.5rem);
+    background-color: var(--background-color-elements);
+    border-radius: var(--border-radius-s);
     transition: 0.2s linear;
   }
   > * {
@@ -20,13 +20,10 @@ export const JobContainer = styled.article`
   h3 {
     padding: 1.2rem 0;
     &:hover {
-      color: var(--Dark-Gray);
+      color: var(--color-dark-grey);
     }
   }
   h4 {
     padding-top: 4rem;
-  }
-  > p {
-    color: var(--Dark-Gray);
   }
 `

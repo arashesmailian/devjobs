@@ -2,17 +2,20 @@ import styled from "styled-components";
 
 export const FooterBannerSection = styled.section`
 box-sizing:content-box;
-width:min(65rem,100%);
+width:min(80rem,100%);
 display:flex;
 justify-content:space-between;
-padding:1.5rem 0;
+padding:3rem 0;
 margin:8rem auto 0;
-> div{
-    display:flex;
+
+@media (max-width: 48.12em){
     flex-direction:column;
-    justify-content:center;
+    align-items:stretch;
+    button{
+        width: 100% !important;
+    }
+    > div {
+        display:none;
+    }
 }
-p{
-    color:var(--Dark-Gray);
-}   
 `

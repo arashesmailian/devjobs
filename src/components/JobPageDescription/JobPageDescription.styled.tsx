@@ -1,11 +1,11 @@
 import styled from 'styled-components'
 
 export const JobDescSection = styled.section`
-  width: min(65rem, 100%);
+  width: min(80rem, 100%);
   display: flex;
   flex-direction: column;
-  background-color: var(--White);
-  border-radius: 0.6rem;
+  background-color: var(--background-color-elements);
+  border-radius: var(--border-radius-s);
   padding: 4.8rem;
   margin-top: 3rem;
   gap: 4rem;
@@ -34,9 +34,9 @@ export const JobDescSection = styled.section`
         width: 0.4rem;
         height: 0.4rem;
         left: 0;
-        top: 0.7rem;
+        top: 1rem;
         border-radius: 100%;
-        background-color: var(--Dark-Gray);
+        background-color: var(--color-dark-grey);
       }
     }
   }
@@ -47,7 +47,7 @@ export const JobDescSection = styled.section`
       position: relative;
       display: inline-block;
       flex: 0 0 3rem;
-      color: var(--Violet);
+      color: var(--color-violet);
       font-weight: 700;
     }
   }

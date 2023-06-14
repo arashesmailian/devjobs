@@ -3,5 +3,6 @@ export interface IMainButton {
   autoWidth?: boolean
   noBackground?: boolean
   marginTop?: boolean
-  isSearch?: boolean
+  hideOnMobile?:boolean
+  showOnlyOnMobile?:boolean
 }

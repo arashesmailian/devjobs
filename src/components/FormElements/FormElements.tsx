@@ -1,6 +1,8 @@
 import {ChangeEvent} from 'react'
 import {Label} from './FormElements.styled'
-import {IconSearch, IconLocation} from '@assets/desktop'
+// import {IconSearch, IconLocation} from '@assets/desktop'
+import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
+import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 
 const InputElements = (props: {
   infosStateHook: [string, any]
@@ -22,16 +24,16 @@ const InputElements = (props: {
         <IconSearch />
         <input
           type='text'
-          placeholder='title'
+          placeholder='Filter by Title...'
           value={info}
           onChange={titleValueOnChange}
         />
       </Label>
-      <Label htmlFor='filterByLocation'>
+      <Label htmlFor='filterByLocation' hideOnMobile>
         <IconLocation />
         <input
           type='text'
-          placeholder='location'
+          placeholder='Filter by Location...'
           value={location}
           onChange={locationValueOnChange}
         />

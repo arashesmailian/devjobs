@@ -1,7 +1,7 @@
-import * as React from 'react'
+import MainBox from '@components/MainBox/MainBox'
 
-const HomePage = () => {
-  return <div>Home</div>
+const HomePage: React.FC = () => {
+  return <MainBox />
 }
 
 export default HomePage

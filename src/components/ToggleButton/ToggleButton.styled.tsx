@@ -12,21 +12,21 @@ export const ThemeButton = styled.button<ThemeButtonProps>`
   height: 2.4rem;
   border-radius: 1.5rem;
   position: relative;
-  background-color: var(--White);
+  background-color: var(--color-white);
   transition: 0.2s linear;
   &::before {
     content: '';
     display: inline-block;
     width: 1.4rem;
     height: 1.4rem;
-    background-color: var(--Violet);
+    background-color: var(--color-violet);
     border-radius: 100%;
     position: absolute;
     top: 0.45rem;
     left: 0.5rem;
     transition: 0.2s linear;
     transform: ${(props) =>
-      props.isLightMode ? 'translateX(0)' : 'translateX(2.4rem)'};
+      props.activeTheme === 'light' ? 'translateX(0)' : 'translateX(2.4rem)'};
   }
   @media (hover: hover) {
     &:hover {

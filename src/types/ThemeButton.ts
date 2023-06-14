@@ -1,4 +1,4 @@
 export interface ThemeButtonProps {
-  isLightMode: boolean
+  activeTheme: string
   onClick: () => void
 }

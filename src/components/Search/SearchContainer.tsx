@@ -9,6 +9,8 @@ import {
   filteringByLocation,
   filteringOnInfo,
 } from '@redux/reducers/newJobSlice'
+import iconFilter from '@assets/mobile/iconFilter.svg'
+import iconSearch from '@assets/mobile/icon-search.svg'
 
 const SearchContainer = () => {
   // ***** states ***** //
@@ -17,14 +19,15 @@ const SearchContainer = () => {
   const [checkBoxStatus, setCheckBoxStatus] = useState<boolean>(false)
   const dispatch = useDispatch()
   // ***** states ***** //
-
   const formSubmitHandler = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(filteringOnInfo(infosStateHook[0]))
     dispatch(filteringByLocation(locationStateHook[0]))
     dispatch(filteringByFullTime(checkBoxStatus))
   }
-
+  const testOnClick = () => {
+    console.log('filter click')
+  }
   return (
     <Form onSubmit={formSubmitHandler}>
       <FromSection>
@@ -35,12 +38,23 @@ const SearchContainer = () => {
         <CheckBox
           status={checkBoxStatus}
           changeCheckBoxHandler={setCheckBoxStatus}
+          hideOnMobile
         />
-        <div>
-          <Button primary autoWidth isSearch>
-            Search
-          </Button>
-        </div>
+        <Button primary hideOnMobile>
+          Search
+        </Button>
+        <Button
+          autoWidth
+          showOnlyOnMobile
+          noBackground
+          clickHandler={testOnClick}
+          typeOfBtn='button'
+        >
+          <img src={iconFilter} alt='filter icon' />
+        </Button>
+        <Button primary autoWidth showOnlyOnMobile>
+          <img src={iconSearch} alt='search icon' />
+        </Button>
       </FromSection>
     </Form>
   )

@@ -1,18 +1,13 @@
-import {Header} from './Header.styled'
-import {HeaderBgPattern, LogoIcon, IconLocation} from '@assets/desktop'
+import {HeaderContainer} from './Header.styled'
 import ToggleButton from '@components/ToggleButton/ToggleButton'
+import {LogoIcon} from '@assets/desktop/LogoIcon'
 
 const Headers = () => {
   return (
-    <Header.Container>
-      <HeaderBgPattern />
-      <Header.ItemsContainer>
-        <div>
-          <LogoIcon />
-        </div>
-        <ToggleButton />
-      </Header.ItemsContainer>
-    </Header.Container>
+    <HeaderContainer>
+      <LogoIcon />
+      <ToggleButton />
+    </HeaderContainer>
   )
 }
 

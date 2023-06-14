@@ -48,11 +48,12 @@ export const JobPageMainContainer = styled.main`
   align-items: center;
   margin-bottom: 10rem;
   margin-top: -3.5rem;
-  padding: 0 15%;
+  padding: var(--padding-layout);
+  transition: 0.5s linear;
 `
 export const Footer = styled.footer`
   width: 100%;
-  background-color: var(--White);
+  background-color: var(--background-color-elements);
   transition: 0.2s linear;
-  padding: 0 15%;
+  padding: var(--padding-layout);
 `

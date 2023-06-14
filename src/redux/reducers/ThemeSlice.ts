@@ -1,21 +1,16 @@
 import {PayloadAction, createSlice} from '@reduxjs/toolkit'
-import { ThemeState } from '@typings/ThemeState'
 
-const firstState: ThemeState = {
-  isLightMode: true,
-}
-
-// const prefersColorScheme:string = window.matchMedia('(prefers-color-scheme: light)')
-//   .matches
-//   ? 'light'
-//   : 'dark'
+const prefersColorScheme:string = window.matchMedia('(prefers-color-scheme: light)')
+  .matches
+  ? 'light'
+  : 'dark'
 
 export const ThemeSlice = createSlice({
     name:'themeState',
-    initialState: firstState,
+    initialState: prefersColorScheme,
     reducers:{
-        changeTheme:(state,action:PayloadAction<boolean>)=> {
-          return {...state,isLightMode:action.payload}
+        changeTheme:(state,action:PayloadAction<string>)=> {
+          return action.payload
         }
     }
 })

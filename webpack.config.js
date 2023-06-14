@@ -10,8 +10,10 @@ module.exports = {
   },
   devtool: 'inline-source-map',
   devServer: {
-    static: './dist',
+    static: './src',
     historyApiFallback: true, // for router added
+    // contentBase: path.resolve(__dirname, 'src/assets'),
+    // publicPath: '/',
   },
   module: {
     rules: [
