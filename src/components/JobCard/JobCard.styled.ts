@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const JobContainer = styled.article`
   padding: 1rem 3.2rem 3.2rem;
   position: relative;
+  animation: popingAnimation 1s ease-in-out;
   &::before {
     content: '';
     position: absolute;
@@ -25,5 +26,19 @@ export const JobContainer = styled.article`
   }
   h4 {
     padding-top: 4rem;
+  }
+  
+  @keyframes popingAnimation {
+    0% {
+      transform: scale(0);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
+  @media (max-width: 48.12em) {
+    &::before{
+      height:calc(100% - 1.5rem);
+    }
   }
 `

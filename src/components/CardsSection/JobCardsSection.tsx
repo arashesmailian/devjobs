@@ -6,6 +6,7 @@ import {IJob} from '@typings/IJob'
 import {includeText} from '../../helper/includeText'
 import Button from '@components/Button/Button'
 import {changingNumberOfJobsToShow} from '@redux/reducers/newJobSlice'
+import {useCallback, useMemo} from 'react'
 
 const ALLJOBS = require('../../../data.json')
 
@@ -18,46 +19,50 @@ const CardsSection = () => {
     numberOfJobsToShow,
   } = useSelector((state: RootState) => state.jobs)
 
-  const filterdJobs = ALLJOBS.filter((job: IJob) => {
-    let isFoundwithInfos = false
-    let isFoundwithLocation = false
-    let isFoundwithFullTime = false
+  const filterdJobs = useMemo(
+    () =>
+      ALLJOBS.filter((job: IJob) => {
+        let isFoundwithInfos = false
+        let isFoundwithLocation = false
+        let isFoundwithFullTime = false
 
-    if (filteredByInfo) {
-      isFoundwithInfos =
-        includeText(job.company, filteredByInfo) ||
-        includeText(job.position, filteredByInfo)
-    }
-    if (filteredByLocation) {
-      isFoundwithLocation = includeText(job.location, filteredByLocation)
-    }
-    if (filterdByFullTime) {
-      isFoundwithFullTime = includeText(job.contract, 'Full Time')
-    }
-    if (filteredByInfo && filteredByLocation && filterdByFullTime) {
-      return isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
-    }
-    if (filteredByInfo && filteredByLocation && !filterdByFullTime) {
-      return isFoundwithInfos && isFoundwithLocation && !isFoundwithFullTime
-    }
-    if (filteredByInfo && !filteredByLocation && filterdByFullTime) {
-      return isFoundwithInfos && !isFoundwithLocation && isFoundwithFullTime
-    }
-    if (!filteredByInfo && filteredByLocation && filterdByFullTime) {
-      return !isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
-    }
-    if (filteredByInfo && !filteredByLocation && !filterdByFullTime) {
-      return isFoundwithInfos
-    }
-    if (!filteredByInfo && filteredByLocation && !filterdByFullTime) {
-      return isFoundwithLocation
-    }
-    if (!filteredByInfo && !filteredByLocation && filterdByFullTime) {
-      return isFoundwithFullTime
-    }
+        if (filteredByInfo) {
+          isFoundwithInfos =
+            includeText(job.company, filteredByInfo) ||
+            includeText(job.position, filteredByInfo)
+        }
+        if (filteredByLocation) {
+          isFoundwithLocation = includeText(job.location, filteredByLocation)
+        }
+        if (filterdByFullTime) {
+          isFoundwithFullTime = includeText(job.contract, 'Full Time')
+        }
+        if (filteredByInfo && filteredByLocation && filterdByFullTime) {
+          return isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
+        }
+        if (filteredByInfo && filteredByLocation && !filterdByFullTime) {
+          return isFoundwithInfos && isFoundwithLocation && !isFoundwithFullTime
+        }
+        if (filteredByInfo && !filteredByLocation && filterdByFullTime) {
+          return isFoundwithInfos && !isFoundwithLocation && isFoundwithFullTime
+        }
+        if (!filteredByInfo && filteredByLocation && filterdByFullTime) {
+          return !isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
+        }
+        if (filteredByInfo && !filteredByLocation && !filterdByFullTime) {
+          return isFoundwithInfos
+        }
+        if (!filteredByInfo && filteredByLocation && !filterdByFullTime) {
+          return isFoundwithLocation
+        }
+        if (!filteredByInfo && !filteredByLocation && filterdByFullTime) {
+          return isFoundwithFullTime
+        }
 
-    return true
-  })
+        return true
+      }),
+    [filteredByInfo, filteredByLocation, filterdByFullTime]
+  )
 
   const numOfFilterdJobs = filterdJobs.length
 

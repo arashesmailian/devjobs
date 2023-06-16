@@ -5,9 +5,9 @@ import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
 import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 
 const InputElements = (props: {
-  infosStateHook: [string, any]
-  locationStateHook: [string, any]
-}) => {
+  infosStateHook?: [string, any]
+  locationStateHook?: [string, any]
+}) =>{
   const [info, setInfo] = props.infosStateHook
   const [location, setLocation] = props.locationStateHook
 

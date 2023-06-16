@@ -1,5 +1,5 @@
 import store from '@redux/store'
-import GlobalStyles from '@styles/GlobalStyles/GlobalStyles.styled'
+import GlobalStyles from '@styles/GlobalStyles'
 import {Provider} from 'react-redux'
 
 const ProvidersWrapper = (props: any) => {

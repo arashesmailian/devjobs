@@ -51,6 +51,9 @@ export const JobDescSection = styled.section`
       font-weight: 700;
     }
   }
+  @media (max-width: 48.12em){
+    padding:3rem;
+  }
 `
 export const JobDescriptionDetails = styled.div`
   display: flex;
@@ -58,6 +61,14 @@ export const JobDescriptionDetails = styled.div`
   align-items: center;
   h1 {
     padding: 0.8rem 0;
+  }
+  @media (max-width: 48.12em){
+    flex-direction: column;
+    align-items:stretch;
+    gap:6rem;
+    button{
+      width:100% !important;
+    }
   }
 `
 export const JobItemsDots = styled.span``

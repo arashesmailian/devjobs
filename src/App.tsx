@@ -2,7 +2,7 @@ import {BrowserRouter, Navigate, Route, Routes} from 'react-router-dom'
 import NotFoundPage from './pages/NotFoundPage'
 import JobPage from './pages/JobPage'
 import HomePage from './pages/HomePage'
-import GlobalStyles from '@styles/GlobalStyles/GlobalStyles.styled'
+import GlobalStyles from '@styles/GlobalStyles'
 import Header from '@components/Header/Header'
 import {useSelector} from 'react-redux'
 import {RootState} from '@redux/store'
@@ -13,6 +13,7 @@ const App: React.FC = () => {
 
   useEffect(() => {
     document.getElementById('root').dataset.theme = theme
+    document.getElementById('modal').dataset.theme = theme
   }, [theme])
 
   return (

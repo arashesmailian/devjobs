@@ -1,6 +1,12 @@
 import {CheckBoxLabelContainer} from './CheckBox.styled'
 
-const CheckBox = ({status, changeCheckBoxHandler, hideOnMobile}) => {
+export interface ICheckBox{
+  status:boolean
+  changeCheckBoxHandler:any
+  hideOnMobile?:boolean
+}
+
+const CheckBox:React.FC<ICheckBox> = ({status, changeCheckBoxHandler, hideOnMobile}) => {
   return (
     <CheckBoxLabelContainer
       htmlFor='filterByFullTime'

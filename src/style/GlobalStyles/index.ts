@@ -75,6 +75,14 @@ const GlobalStyles = createGlobalStyle`
         --color-btn-2: var(--color-white);
     }
 
+    #modal[data-theme="dark"]{
+        --background-color-elements: var(--color-very-dark-blue);
+        --color-checkbox: #313743;
+    }
+    #modal[data-theme="light"]{
+        --background-color-elements: var(--color-white);
+        --color-checkbox: #e7e8e9;
+    }
 
     button,input {
         border:none;
