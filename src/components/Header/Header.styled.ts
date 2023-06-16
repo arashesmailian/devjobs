@@ -15,17 +15,3 @@ export const HeaderContainer = styled.header`
     background-image: url('../../assets/mobile/Bgpatternheader.svg');
   }
 `
-// export const HeaderItemsContainer = styled.div`
-//   position: relative;
-//   display: flex;
-//   justify-content: space-between;
-//   align-items: center;
-//   margin-top: -120px;
-//   /* margin-left: 50px;
-//   margin-right: 50px; */
-//   padding: var(--padding-layout);
-// `
-// export const Header = {
-//   Container: HeaderContainer,
-//   ItemsContainer: HeaderItemsContainer,
-// }

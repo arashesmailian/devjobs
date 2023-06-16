@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ModalContainer = styled.div`
+export const ModalContainer = styled.div<{isOpen:boolean}>`
     position:absolute;
     z-index:3;
     top:50%;

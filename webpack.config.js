@@ -12,8 +12,6 @@ module.exports = {
   devServer: {
     static: './src',
     historyApiFallback: true, // for router added
-    // contentBase: path.resolve(__dirname, 'src/assets'),
-    // publicPath: '/',
   },
   module: {
     rules: [

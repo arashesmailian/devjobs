@@ -1,8 +1,13 @@
-import React, {ReactNode, useEffect, useRef} from 'react'
+import React, { useEffect, useRef} from 'react'
 import {createPortal} from 'react-dom'
 import {ModalContainer} from './FilterModal.styled'
 
-const FilterModal = ({children}: {children: ReactNode}) => {
+interface IModal {
+  isOpen: boolean
+  children: React.ReactNode
+}
+
+const FilterModal: React.FC<IModal> = ({children, isOpen}) => {
   const ref = useRef(null)
   if (!ref.current) {
     ref.current = document.createElement('div')
@@ -11,14 +16,14 @@ const FilterModal = ({children}: {children: ReactNode}) => {
   useEffect(() => {
     const modalRoot = document.getElementById('modal')
     modalRoot.appendChild(ref.current)
+    document.getElementById('root').style.filter = 'brightness(60%)'
 
     return () => modalRoot.removeChild(ref.current)
   }, [])
 
-  return (
-    <>
-      {createPortal(<ModalContainer>{children}</ModalContainer>, ref.current)}
-    </>
+  return createPortal(
+    <ModalContainer isOpen={isOpen}>{children}</ModalContainer>,
+    ref.current
   )
 }
 

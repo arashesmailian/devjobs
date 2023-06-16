@@ -8,7 +8,6 @@ export type RootState = ReturnType<typeof rootReducer>;
 export const rootReducer = combineReducers({
   theme:ThemeSlice,
   jobs:newJobSlice,
-  // filter:newJobSlice,
 });
 
 const store = configureStore({

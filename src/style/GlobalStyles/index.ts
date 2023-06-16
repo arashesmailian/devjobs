@@ -46,7 +46,6 @@ const GlobalStyles = createGlobalStyle`
         font-family: 'Kumbh Sans', sans-serif;
         font-size:var(--font-size-body);
         line-height:var(--line-height-body);
-        /* background-color: var(--color-light-grey); */
         color:var(--color-dark-grey);
     }
 
@@ -134,25 +133,5 @@ const GlobalStyles = createGlobalStyle`
         }
     }   
 `
-
-// export const myTheme = {
-//     light:{
-//         lightGray : 'var(--color-light-grey)',
-//         violet:'var(--color-violet)',
-//         white: 'var(--color-white)',
-//         bgColorBtn2: 'var(--background-color-btn2)',
-//         bgColorHoverBtn2: 'var(--background-color-hover-btn2)',
-//         bodyBg:'var(--color-light-grey)',
-//     },
-//     dark:{
-//         bodyBg:'var(--color-midnight)',
-//     },
-//     shared:{
-//         veryDarkBlue : 'var(--color-very-dark-blue)',
-//         lightViolet : 'var(--color-light-violet)',
-//         darkGray: 'var(--color-dark-grey)',
-
-//     }
-// }
 
 export default GlobalStyles;

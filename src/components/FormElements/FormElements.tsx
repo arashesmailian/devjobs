@@ -1,6 +1,5 @@
 import {ChangeEvent} from 'react'
 import {Label} from './FormElements.styled'
-// import {IconSearch, IconLocation} from '@assets/desktop'
 import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
 import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 

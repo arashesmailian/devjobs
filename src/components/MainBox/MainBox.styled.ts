@@ -8,6 +8,4 @@ export const MainTag = styled.main`
   margin-bottom: 10rem;
   margin-top: -3.5rem;
   padding: var(--padding-layout);
-  /* width: 100%;
-  height: 100px; */
 `
