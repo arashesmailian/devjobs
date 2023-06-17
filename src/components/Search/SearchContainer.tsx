@@ -14,6 +14,7 @@ import iconSearch from '@assets/mobile/icon-search.svg'
 import Input from '@components/Input/Input'
 import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
+import ModalWithDialog from '@components/ModalWithDialog/ModalWithDialog'
 
 const SearchContainer = () => {
   // ***** states ***** //
@@ -35,7 +36,6 @@ const SearchContainer = () => {
     dispatch(filteringByFullTime(checkBoxStatus))
     setShowModal(false)
   }
-
   return (
     <>
       <Form onSubmit={formSubmitHandler}>
@@ -74,7 +74,25 @@ const SearchContainer = () => {
             <img src={iconSearch} alt='search icon' />
           </Button>
           {showModal && (
-            <FilterModal isOpen={showModal}>
+            // <FilterModal isOpen={showModal}>
+            //   <Input
+            //     valueHandler={locationStateHook}
+            //     inputName='filterByLocation'
+            //     iconComponent={<IconLocation />}
+            //     inputPlaceHolder='Filter by location'
+            //   />
+            //   <CheckBox
+            //     status={checkBoxStatus}
+            //     changeCheckBoxHandler={setCheckBoxStatus}
+            //   />
+            //   <Button primary autoWidth clickHandler={formSubmitHandler}>
+            //     Search
+            //   </Button>
+            // </FilterModal>
+            <ModalWithDialog
+              open={showModal}
+              onClose={() => setShowModal(false)}
+            >
               <Input
                 valueHandler={locationStateHook}
                 inputName='filterByLocation'
@@ -88,7 +106,7 @@ const SearchContainer = () => {
               <Button primary autoWidth clickHandler={formSubmitHandler}>
                 Search
               </Button>
-            </FilterModal>
+            </ModalWithDialog>
           )}
         </FromSection>
       </Form>
