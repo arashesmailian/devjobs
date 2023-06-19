@@ -16,7 +16,7 @@ export default NotFoundPage
 
 export const NotFoundSection = styled.section`
   width: 100%;
-  background-color: var(--color-white);
+  background-color: var(--background-color-elements);
   border-radius: 0.6rem;
   padding: 4rem;
   transition: 0.2s linear;
