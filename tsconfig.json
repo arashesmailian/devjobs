@@ -19,7 +19,8 @@
       "@components/*": ["src/components/*"],
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/style/*"],
-      "@typings/*": ["src/types/*"]
+      "@typings/*": ["src/types/*"],
+      "@pages/*": ["src/pages/*"]
     }
   }
 }

@@ -47,6 +47,7 @@ module.exports = {
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@styles': path.resolve(__dirname, 'src/style'),
       '@typings': path.resolve(__dirname, 'src/types'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
     },
   },
   plugins: [

@@ -26,13 +26,13 @@ const JobPage: React.FC = () => {
   )
 }
 
-const WrappedJobPage: React.FC = () => {
-  return (
-    <ErrorBoundary>
-      <JobPage />
-    </ErrorBoundary>
-  )
-}
+// const WrappedJobPage: React.FC = () => {
+//   return (
+//     <ErrorBoundary>
+//       <JobPage />
+//     </ErrorBoundary>
+//   )
+// }
 
 export default JobPage
 
