@@ -1,12 +1,12 @@
 import {useDispatch, useSelector} from 'react-redux'
 import {CardsSectionContainer} from './JobCardsSection.styled'
-import {RootState} from '@redux/store'
 import JobCard from '@components/JobCard/JobCard'
 import {IJob} from '@typings/IJob'
 import {includeText} from '../../helper/includeText'
 import Button from '@components/Button/Button'
-import {changingNumberOfJobsToShow} from '@redux/reducers/newJobSlice'
-import {useCallback, useMemo} from 'react'
+import {changingNumberOfJobsToShow} from '@redux/reducers/JobSlice'
+import {useMemo} from 'react'
+import {JobFiltersSelector} from '@redux/selectors'
 
 const ALLJOBS = require('../../../data.json')
 
@@ -15,66 +15,80 @@ const CardsSection = () => {
   const {
     filteredByInfo,
     filteredByLocation,
-    filterdByFullTime,
+    filteredByFullTime,
     numberOfJobsToShow,
-  } = useSelector((state: RootState) => state.jobs)
+  } = useSelector(JobFiltersSelector)
 
-  const filterdJobs = useMemo(
+  const filteredJobs = useMemo(
     () =>
       ALLJOBS.filter((job: IJob) => {
-        let isFoundwithInfos = false
-        let isFoundwithLocation = false
-        let isFoundwithFullTime = false
+        let isFoundedWithInfos = false
+        let isFoundedWithLocation = false
+        let isFoundedWithFullTime = false
 
         if (filteredByInfo) {
-          isFoundwithInfos =
+          isFoundedWithInfos =
             includeText(job.company, filteredByInfo) ||
             includeText(job.position, filteredByInfo)
         }
         if (filteredByLocation) {
-          isFoundwithLocation = includeText(job.location, filteredByLocation)
+          isFoundedWithLocation = includeText(job.location, filteredByLocation)
         }
-        if (filterdByFullTime) {
-          isFoundwithFullTime = includeText(job.contract, 'Full Time')
+        if (filteredByFullTime) {
+          isFoundedWithFullTime = includeText(job.contract, 'Full Time')
         }
-        if (filteredByInfo && filteredByLocation && filterdByFullTime) {
-          return isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
+        if (filteredByInfo && filteredByLocation && filteredByFullTime) {
+          return (
+            isFoundedWithInfos && isFoundedWithLocation && isFoundedWithFullTime
+          )
         }
-        if (filteredByInfo && filteredByLocation && !filterdByFullTime) {
-          return isFoundwithInfos && isFoundwithLocation && !isFoundwithFullTime
+        if (filteredByInfo && filteredByLocation && !filteredByFullTime) {
+          return (
+            isFoundedWithInfos &&
+            isFoundedWithLocation &&
+            !isFoundedWithFullTime
+          )
         }
-        if (filteredByInfo && !filteredByLocation && filterdByFullTime) {
-          return isFoundwithInfos && !isFoundwithLocation && isFoundwithFullTime
+        if (filteredByInfo && !filteredByLocation && filteredByFullTime) {
+          return (
+            isFoundedWithInfos &&
+            !isFoundedWithLocation &&
+            isFoundedWithFullTime
+          )
         }
-        if (!filteredByInfo && filteredByLocation && filterdByFullTime) {
-          return !isFoundwithInfos && isFoundwithLocation && isFoundwithFullTime
+        if (!filteredByInfo && filteredByLocation && filteredByFullTime) {
+          return (
+            !isFoundedWithInfos &&
+            isFoundedWithLocation &&
+            isFoundedWithFullTime
+          )
         }
-        if (filteredByInfo && !filteredByLocation && !filterdByFullTime) {
-          return isFoundwithInfos
+        if (filteredByInfo && !filteredByLocation && !filteredByFullTime) {
+          return isFoundedWithInfos
         }
-        if (!filteredByInfo && filteredByLocation && !filterdByFullTime) {
-          return isFoundwithLocation
+        if (!filteredByInfo && filteredByLocation && !filteredByFullTime) {
+          return isFoundedWithLocation
         }
-        if (!filteredByInfo && !filteredByLocation && filterdByFullTime) {
-          return isFoundwithFullTime
+        if (!filteredByInfo && !filteredByLocation && filteredByFullTime) {
+          return isFoundedWithFullTime
         }
 
         return true
       }),
-    [filteredByInfo, filteredByLocation, filterdByFullTime]
+    [filteredByInfo, filteredByLocation, filteredByFullTime]
   )
 
-  const numOfFilterdJobs = filterdJobs.length
+  const numOffilteredJobs = filteredJobs.length
 
   return (
     <>
       <CardsSectionContainer>
-        {filterdJobs.map(
+        {filteredJobs.map(
           (job: IJob, index: number) =>
             index < numberOfJobsToShow && <JobCard key={job.id} job={job} />
         )}
       </CardsSectionContainer>
-      {numberOfJobsToShow < numOfFilterdJobs && (
+      {numberOfJobsToShow < numOffilteredJobs && (
         <Button
           primary
           marginTop

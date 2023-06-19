@@ -1,4 +1,4 @@
 export interface ICompanyImage {
   small?: boolean
-  backGroundColor?: string
+  backGroundColor?: string|undefined
 }

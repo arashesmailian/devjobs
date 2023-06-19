@@ -3,14 +3,14 @@ import { createSlice,PayloadAction } from "@reduxjs/toolkit";
 export interface filterState{
     filteredByInfo:string;
     filteredByLocation:string;
-    filterdByFullTime:boolean;
+    filteredByFullTime:boolean;
     numberOfJobsToShow:number;
 } 
 
 const initialFilterState:filterState = {
     filteredByInfo:'',
     filteredByLocation:'',
-    filterdByFullTime:false,
+    filteredByFullTime:false,
     numberOfJobsToShow:9,
 }
 
@@ -25,11 +25,11 @@ export const newJobSlice = createSlice({
             return {...state,filteredByLocation:action.payload}
         },
         filteringByFullTime:(state,action:PayloadAction<boolean>)=>{
-            return {...state,filterdByFullTime:action.payload}
+            return {...state,filteredByFullTime:action.payload}
         },
         changingNumberOfJobsToShow:(state,action:PayloadAction<number>)=>{
             return {...state,numberOfJobsToShow:state.numberOfJobsToShow + action.payload}
-        }
+        },
     }
 })
 

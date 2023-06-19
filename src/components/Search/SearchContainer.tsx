@@ -1,40 +1,38 @@
 import {ChangeEvent, useState} from 'react'
 import {useDispatch} from 'react-redux'
+
 import {Form, FromSection} from './SearchContainer.styled'
 import CheckBox from '@components/CheckBox/CheckBox'
 import Button from '@components/Button/Button'
 import FilterModal from '@components/FilterModal/FilterModal'
+import ModalWithDialog from '@components/ModalWithDialog/ModalWithDialog'
 import {
   filteringByFullTime,
   filteringByLocation,
   filteringOnInfo,
-} from '@redux/reducers/newJobSlice'
+} from '@redux/reducers/JobSlice'
 import iconFilter from '@assets/mobile/iconFilter.svg'
 import iconSearch from '@assets/mobile/icon-search.svg'
 import Input from '@components/Input/Input'
 import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
-import ModalWithDialog from '@components/ModalWithDialog/ModalWithDialog'
 
 const SearchContainer = () => {
-  // ***** states ***** //
   const infosStateHook = useState<string>('')
   const locationStateHook = useState<string>('')
   const [checkBoxStatus, setCheckBoxStatus] = useState<boolean>(false)
   const dispatch = useDispatch()
-  // ***** states ***** //
 
-  //***** modal states & functions *****//
   const [showModal, setShowModal] = useState(false)
   const openModal = () => setShowModal(true)
-  //***** modal functions *****//
+  const closeModal = () => setShowModal(false)
 
   const formSubmitHandler = (e: ChangeEvent<HTMLFormElement>) => {
     e.preventDefault()
     dispatch(filteringOnInfo(infosStateHook[0]))
     dispatch(filteringByLocation(locationStateHook[0]))
     dispatch(filteringByFullTime(checkBoxStatus))
-    setShowModal(false)
+    closeModal()
   }
   return (
     <>

@@ -1,19 +1,14 @@
-import {useMemo} from 'react'
 import {useParams} from 'react-router-dom'
 import styled from 'styled-components'
-import {IJob} from '@typings/IJob'
 import CompanyPageHeader from '@components/CompanyPageHeader/CompanyPageHeader'
 import JobPageDescription from '@components/JobPageDescription/JobPageDescription'
 import JobPageBottomBanner from '@components/JobPageFooter/JobPageFooter'
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
-
-const jobs = require('../../data.json')
+import {SpecificJobSelector} from '@redux/selectors'
 
 const JobPage: React.FC = () => {
   const {id} = useParams()
-  const job: IJob = useMemo(() => {
-    return jobs.find((job: IJob) => String(job.id) === id)
-  }, [id])
+  const job = SpecificJobSelector(id)
   return (
     <>
       <JobPageMainContainer>

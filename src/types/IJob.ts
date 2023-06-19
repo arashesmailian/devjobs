@@ -12,10 +12,10 @@ export interface IJob {
   description: string
   requirements: {
     content: string
-    items: [string]
+    items: string[]
   }
   role: {
     content: string
-    items: [string]
+    items: string[]
   }
 }

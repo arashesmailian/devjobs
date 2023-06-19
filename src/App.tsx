@@ -5,11 +5,11 @@ import HomePage from './pages/HomePage'
 import GlobalStyles from '@styles/GlobalStyles'
 import Header from '@components/Header/Header'
 import {useSelector} from 'react-redux'
-import {RootState} from '@redux/store'
 import {useEffect} from 'react'
+import { ThemeSelector } from '@redux/selectors'
 
 const App: React.FC = () => {
-  const theme = useSelector((state: RootState) => state.theme)
+  const theme = useSelector(ThemeSelector)
 
   useEffect(() => {
     document.getElementById('root').dataset.theme = theme
