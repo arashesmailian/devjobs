@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import CompanyPageHeader from '@components/CompanyPageHeader/CompanyPageHeader'
 import JobPageDescription from '@components/JobPageDescription/JobPageDescription'
 import JobPageBottomBanner from '@components/JobPageFooter/JobPageFooter'
-import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
 import {SpecificJobSelector} from '@redux/selectors'
 
 const JobPage: React.FC = () => {
@@ -25,14 +24,6 @@ const JobPage: React.FC = () => {
     </>
   )
 }
-
-// const WrappedJobPage: React.FC = () => {
-//   return (
-//     <ErrorBoundary>
-//       <JobPage />
-//     </ErrorBoundary>
-//   )
-// }
 
 export default JobPage
 

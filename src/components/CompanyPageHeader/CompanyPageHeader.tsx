@@ -22,7 +22,7 @@ const CompanyPageHeader = (props: {
           <h2>{props.company}</h2>
           <p>{props.website}</p>
         </div>
-        <a href={props.website} target='_blank' rel='noreferre'>
+        <a href={props.website} target='_blank' rel='noreferrer'>
           <Button primary>Company Site</Button>
         </a>
       </CompanyPageHeaderInfos>

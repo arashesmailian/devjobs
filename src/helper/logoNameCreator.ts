@@ -1,2 +1,2 @@
-export const logoNameCraetor = (logoName:string)=>
+export const logoNameCreator = (logoName:string)=>
     logoName.replace(/\s/g, "").toLocaleLowerCase()

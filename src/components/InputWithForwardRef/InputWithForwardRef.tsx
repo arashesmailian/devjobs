@@ -1,24 +1,17 @@
 import {Label} from '@components/FormElements/FormElements.styled'
-import {ForwardedRef, forwardRef} from 'react'
+import {forwardRef} from 'react'
 
-const InputWithForwardRef = forwardRef(
-  (
-    props: {
-      valueHandler?: string
-      inputName: string
-      iconComponent: any
-      hideOnMobile?: boolean
-      inputPlaceHolder: string
-    },
-    ref: ForwardedRef<HTMLInputElement>
-  ) => {
-    // const localRef = useRef<HTMLInputElement>(null)
-    // useEffect(() => {
-    //   if (localRef.current && ref) {
-    //     localRef.current.value = ref.current.value || ''
-    //   }
-    // }, [ref])
+interface Props {
+  valueHandler?: string
+  inputName: string
+  iconComponent: React.ReactNode
+  hideOnMobile?: boolean
+  inputPlaceHolder: string
+  defaultValue: string
+}
 
+const InputWithForwardRef = forwardRef<HTMLInputElement, Props>(
+  (props, ref) => {
     return (
       <Label hideOnMobile={props.hideOnMobile} htmlFor={props.inputName}>
         {props.iconComponent}
@@ -26,7 +19,8 @@ const InputWithForwardRef = forwardRef(
           type='text'
           placeholder={props.inputPlaceHolder}
           ref={ref}
-          //   value={ref.current.value}
+          defaultValue={props.defaultValue}
+          key={Math.random()} //force input to re-render
         />
       </Label>
     )

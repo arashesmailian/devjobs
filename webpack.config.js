@@ -8,6 +8,7 @@ module.exports = {
   entry: './src/main.tsx',
   devtool: 'inline-source-map',
   output: {
+    publicPath: '/',
     path: path.join(__dirname, '/dist'),
     filename: 'app.bundle.[hash].js',
     chunkFilename: '[id].[hash].js',
@@ -48,6 +49,8 @@ module.exports = {
       '@styles': path.resolve(__dirname, 'src/style'),
       '@typings': path.resolve(__dirname, 'src/types'),
       '@pages': path.resolve(__dirname, 'src/pages'),
+      '@helper': path.resolve(__dirname, 'src/helper'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
     },
   },
   plugins: [

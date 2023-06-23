@@ -20,7 +20,9 @@
       "@assets/*": ["src/assets/*"],
       "@styles/*": ["src/style/*"],
       "@typings/*": ["src/types/*"],
-      "@pages/*": ["src/pages/*"]
+      "@pages/*": ["src/pages/*"],
+      "@helper/*": ["src/helper/*"],
+      "@hooks/*": ["src/hooks/*"]
     }
   }
 }

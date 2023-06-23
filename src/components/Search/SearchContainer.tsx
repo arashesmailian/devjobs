@@ -1,71 +1,56 @@
-import {ChangeEvent, useRef, useState} from 'react'
-import {useDispatch} from 'react-redux'
+import {useRef, useState} from 'react'
 
 import {Form, FromSection} from './SearchContainer.styled'
 import CheckBox from '@components/CheckBox/CheckBox'
 import Button from '@components/Button/Button'
 import FilterModal from '@components/FilterModal/FilterModal'
-import ModalWithDialog from '@components/ModalWithDialog/ModalWithDialog'
-import {
-  filteringByFullTime,
-  filteringByLocation,
-  filteringOnInfo,
-} from '@redux/reducers/JobSlice'
 import iconFilter from '@assets/mobile/iconFilter.svg'
 import iconSearch from '@assets/mobile/icon-search.svg'
-import Input from '@components/Input/Input'
 import {ReactComponent as IconLocation} from '@assets/desktop/IconLocation.svg'
 import {ReactComponent as IconSearch} from '@assets/desktop/IconSearch.svg'
 import InputWithForwardRef from '@components/InputWithForwardRef/InputWithForwardRef'
 
+import {useQueryParams} from '@hooks/useSearchParamsState'
+
 const SearchContainer = () => {
   const titleInputRef = useRef<HTMLInputElement>(null)
   const locationInputRef = useRef<HTMLInputElement>(null)
-  // const infosStateHook = useState<string>('')
-  // const locationStateHook = useState<string>('')
-  const [checkBoxStatus, setCheckBoxStatus] = useState<boolean>(false)
-  const dispatch = useDispatch()
+  const {info, loc, fullTime, setQueryParams} = useQueryParams()
+  const [checkBoxStatus, setCheckBoxStatus] = useState<boolean>(fullTime)
 
   const [showModal, setShowModal] = useState(false)
-  const openModal = () => setShowModal(true)
+  const openModal: React.MouseEventHandler<HTMLButtonElement> = () =>
+    setShowModal(true)
   const closeModal = () => setShowModal(false)
 
-  const formSubmitHandler = (e: ChangeEvent<HTMLFormElement>) => {
+  const formSubmitHandler = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    dispatch(filteringOnInfo(titleInputRef.current.value))
-    dispatch(filteringByLocation(locationInputRef.current.value))
-    dispatch(filteringByFullTime(checkBoxStatus))
+    setQueryParams(
+      titleInputRef.current.value,
+      locationInputRef.current.value,
+      checkBoxStatus
+    )
     closeModal()
   }
+
   return (
     <>
       <Form onSubmit={formSubmitHandler}>
         <FromSection>
-          {/* <Input
-            valueHandler={infosStateHook}
-            inputName='filterByInfos'
-            iconComponent={<IconSearch />}
-            inputPlaceHolder='Filter by title'
-          /> */}
           <InputWithForwardRef
             inputName='filterByInfos'
             iconComponent={<IconSearch />}
             inputPlaceHolder='Filter by title'
             ref={titleInputRef}
+            defaultValue={info}
           />
-          {/* <Input
-            valueHandler={locationStateHook}
-            inputName='filterByLocation'
-            iconComponent={<IconLocation />}
-            inputPlaceHolder='Filter by location'
-            hideOnMobile
-          /> */}
           <InputWithForwardRef
             inputName='filterByLocation'
             iconComponent={<IconLocation />}
             inputPlaceHolder='Filter by location'
             hideOnMobile
             ref={locationInputRef}
+            defaultValue={loc}
           />
           <CheckBox
             status={checkBoxStatus}
@@ -89,17 +74,12 @@ const SearchContainer = () => {
           </Button>
           {showModal && (
             <FilterModal isOpen={showModal}>
-              {/* <Input
-                valueHandler={locationStateHook}
-                inputName='filterByLocation'
-                iconComponent={<IconLocation />}
-                inputPlaceHolder='Filter by location'
-              /> */}
               <InputWithForwardRef
                 inputName='filterByLocation'
                 iconComponent={<IconLocation />}
                 inputPlaceHolder='Filter by location'
                 ref={locationInputRef}
+                defaultValue={loc}
               />
               <CheckBox
                 status={checkBoxStatus}
@@ -109,30 +89,6 @@ const SearchContainer = () => {
                 Search
               </Button>
             </FilterModal>
-            // <ModalWithDialog
-            //   open={showModal}
-            //   onClose={() => setShowModal(false)}
-            // >
-            //   {/* <Input
-            //     valueHandler={locationStateHook}
-            //     inputName='filterByLocation'
-            //     iconComponent={<IconLocation />}
-            //     inputPlaceHolder='Filter by location'
-            //   /> */}
-            //   <InputWithForwardRef
-            //     inputName='filterByLocation'
-            //     iconComponent={<IconLocation />}
-            //     inputPlaceHolder='Filter by location'
-            //     ref={locationInputRef}
-            //   />
-            //   <CheckBox
-            //     status={checkBoxStatus}
-            //     changeCheckBoxHandler={setCheckBoxStatus}
-            //   />
-            //   <Button primary autoWidth clickHandler={formSubmitHandler}>
-            //     Search
-            //   </Button>
-            // </ModalWithDialog>
           )}
         </FromSection>
       </Form>

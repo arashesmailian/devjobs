@@ -7,7 +7,6 @@ import JobPage from '@pages/JobPage'
 import NotFoundPage from '@pages/NotFoundPage'
 
 import GlobalStyles from '@styles/GlobalStyles'
-import NewErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary'
 
 const Root = () => {
@@ -35,7 +34,11 @@ export const router = createBrowserRouter([
     Component: Layout,
     children: [
       {path: '/', Component: HomePage, errorElement: <ErrorBoundary />},
-      {path: '/jobs/:id', Component: JobPage, ErrorBoundary: ErrorBoundary},
+      {
+        path: '/jobs/:id',
+        Component: JobPage,
+        errorElement: <ErrorBoundary />,
+      },
       {
         path: '/notFound',
         Component: NotFoundPage,

@@ -1,7 +1,6 @@
 import {useEffect, useState} from 'react'
 import {CompanyImageContainer} from './CompanyImage.styled'
-import {logoNameCraetor} from '../../helper/logoNameCreator'
-
+import {logoNameCreator} from '../../helper/logoNameCreator'
 
 const CompanyImage = (props: {
   small?: boolean
@@ -15,7 +14,7 @@ const CompanyImage = (props: {
       const res = await import(`@assets/logos/${Name}.svg`)
       setLogoImg(res.default)
     }
-    let LogoName = logoNameCraetor(props.company)
+    let LogoName = logoNameCreator(props.company)
     fetchLogo(LogoName)
   }, [props.company])
 

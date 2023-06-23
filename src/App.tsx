@@ -2,12 +2,12 @@ import {RouterProvider} from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import {useEffect} from 'react'
 
-import {ThemeSelector} from '@redux/selectors'
+import {selectTheme} from '@redux/selectors'
 
 import {router} from './routes'
 
 const App: React.FC = () => {
-  const theme = useSelector(ThemeSelector)
+  const theme = useSelector(selectTheme)
 
   useEffect(() => {
     document.getElementById('root').dataset.theme = theme
